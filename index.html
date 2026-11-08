@@ -90,6 +90,7 @@ h1 .line:nth-child(2)>span{animation-delay:.09s;color:var(--signal)}
 .btn:hover{transform:translateY(-3px)}
 .btn:active{transform:scale(.97)}
 .btn.solid{background:var(--fg);color:var(--bg)}
+.btn.repo{margin-top:22px}
 
 /* EMG strip */
 .strip{padding-top:10px;padding-bottom:10px}
@@ -465,6 +466,7 @@ const T = {
       open: "Open",
       ongoing: "Ongoing",
       did: "What I did",
+      repo: "Full details on GitHub",
       back: "All projects",
       prev: "Previous",
       next: "Next",
@@ -519,19 +521,20 @@ const T = {
           kind: "Master's project · Polytech Annecy",
           when: "2025 – 2026",
           title: "Wireless EMG Acquisition System on ESP32",
-          summary: "Real-time EMG sampling on an ESP32 under FreeRTOS, streamed over Bluetooth Low Energy to a computer.",
+          summary: "Real-time 8 kHz EMG sampling on an ESP32 under FreeRTOS, streamed to a computer over Wi-Fi (UDP) after a Bluetooth Low Energy prototype.",
           bullets: [
-            "Designed a multitasking real-time architecture (FreeRTOS) separating EMG sampling from data transmission.",
-            "Built the Bluetooth Low Energy (BLE) link to a computer; validated the acquisition chain on the received signal."
+            "To keep 8 kHz EMG sampling regular while the data was being sent, designed a FreeRTOS architecture (timer interrupt, queue) separating sampling from transmission.",
+            "Prototyped the link in Bluetooth Low Energy (BLE), then switched to Wi-Fi/UDP when BLE could not sustain a reliable 8 kHz stream; validated the chain on the received signal."
           ],
           tagsLabel: "Technologies",
-          tags: ["ESP32", "FreeRTOS", "BLE", "C/C++", "EMG sensors"],
+          tags: ["ESP32", "FreeRTOS", "BLE", "Wi-Fi/UDP", "C/C++", "Python", "EMG sensors"],
+          repo: "https://github.com/elias-alhoyek/esp32-wireless-emg-acquisition",
           fig: "chain",
           chain: [
             { n: "EMG sensors" },
             { l: "sampling" },
-            { n: "ESP32", s: "FreeRTOS · multitasking" },
-            { l: "BLE" },
+            { n: "ESP32", s: "FreeRTOS · 8 kHz" },
+            { l: "Wi-Fi" },
             { n: "Computer", s: "Received signal, visualized" }
           ],
           figCap: "Signal path of the acquisition system."
@@ -596,7 +599,7 @@ const T = {
       langT: "Languages",
       tech: [
         "Embedded system design (ESP32, Arduino)",
-        "Real-time systems (FreeRTOS) & BLE",
+        "Real-time systems (FreeRTOS), BLE & Wi-Fi/UDP",
         "Signal processing (Python, MATLAB)",
         "Electromyography (EMG) acquisition",
         "Sensors & bioinstrumentation",
@@ -667,6 +670,7 @@ const T = {
       open: "Ouvrir",
       ongoing: "En cours",
       did: "Ce que j'ai fait",
+      repo: "Détails complets sur GitHub",
       back: "Tous les projets",
       prev: "Précédent",
       next: "Suivant",
@@ -721,19 +725,20 @@ const T = {
           kind: "Projet de Master · Polytech Annecy",
           when: "2025 – 2026",
           title: "Système d'acquisition EMG sans fil sur ESP32",
-          summary: "Échantillonnage EMG temps réel sur ESP32 sous FreeRTOS, transmis en Bluetooth Low Energy vers un ordinateur.",
+          summary: "Échantillonnage EMG temps réel à 8 kHz sur ESP32 sous FreeRTOS, transmis vers un ordinateur en Wi-Fi (UDP) après un prototype en Bluetooth Low Energy.",
           bullets: [
-            "Conçu une architecture temps réel multitâche (FreeRTOS) séparant l'échantillonnage EMG de la transmission.",
-            "Mis en place la liaison Bluetooth Low Energy (BLE) vers un ordinateur ; validé la chaîne d'acquisition sur le signal reçu."
+            "Pour garder un échantillonnage EMG régulier à 8 kHz pendant l'envoi des données, conçu une architecture FreeRTOS (interruption timer, file d'attente) séparant acquisition et transmission.",
+            "Prototypé la liaison en Bluetooth Low Energy (BLE), puis basculé en Wi-Fi/UDP, le BLE ne tenant pas un flux fiable à 8 kHz ; validé la chaîne sur le signal reçu."
           ],
           tagsLabel: "Technologies",
-          tags: ["ESP32", "FreeRTOS", "BLE", "C/C++", "Capteurs EMG"],
+          tags: ["ESP32", "FreeRTOS", "BLE", "Wi-Fi/UDP", "C/C++", "Python", "Capteurs EMG"],
+          repo: "https://github.com/elias-alhoyek/esp32-wireless-emg-acquisition",
           fig: "chain",
           chain: [
             { n: "Capteurs EMG" },
             { l: "échantillonnage" },
-            { n: "ESP32", s: "FreeRTOS · multitâche" },
-            { l: "BLE" },
+            { n: "ESP32", s: "FreeRTOS · 8 kHz" },
+            { l: "Wi-Fi" },
             { n: "Ordinateur", s: "Signal reçu, visualisé" }
           ],
           figCap: "Chaîne d'acquisition du système."
@@ -798,7 +803,7 @@ const T = {
       langT: "Langues",
       tech: [
         "Systèmes embarqués (ESP32, Arduino)",
-        "Temps réel (FreeRTOS) et BLE",
+        "Temps réel (FreeRTOS), BLE et Wi-Fi/UDP",
         "Traitement du signal (Python, MATLAB)",
         "Acquisition de signaux EMG",
         "Capteurs et bio-instrumentation",
@@ -1163,6 +1168,7 @@ if (typeof module !== "undefined") module.exports = T;
       (p.aim ? '<h3 class="sub rise" style="--n:' + (3 + nb) + '">' + p.aim.h + '</h3><p class="aim rise" style="--n:' + (4 + nb) + '">' + p.aim.t + "</p>" : "") +
       '<h3 class="sub rise" style="--n:' + (3 + nb + (p.aim ? 2 : 0)) + '">' + p.tagsLabel + "</h3>" +
       '<ul class="tags rise" style="--n:' + (4 + nb + (p.aim ? 2 : 0)) + '">' + p.tags.map(function (x) { return '<li class="chip">' + x + "</li>"; }).join("") + "</ul>" +
+      (p.repo ? '<a class="btn repo rise" style="--n:' + (5 + nb + (p.aim ? 2 : 0)) + '" href="' + p.repo + '" target="_blank" rel="noopener">' + P.repo + ' <span aria-hidden="true">↗</span></a>' : "") +
       '</div><figure class="fig rise" style="--n:3">' + fig + '<figcaption class="mono">' + p.figCap + "</figcaption></figure></div>";
     $("#d-close").innerHTML = '<span aria-hidden="true">←</span>&nbsp;' + P.back;
     $("#d-count").textContent = (i + 1) + " / " + n;
