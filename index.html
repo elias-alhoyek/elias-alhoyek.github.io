@@ -568,8 +568,8 @@ const T = {
     },
     bg: {
       title: "Background",
-      meta: "Education, experience, involvement",
-      tabs: { edu: "Education", exp: "Experience", inv: "Involvement" },
+      meta: "Education, experience",
+      tabs: { edu: "Education", exp: "Experience" },
       edu: [
         { when: "2025 – Present", title: "MSc in Mechatronics Engineering", org: "Polytech Annecy · Université Savoie Mont Blanc" },
         { when: "2019 – 2024", title: "BSc in Computer and Communications Engineering (Biomedical Engineering option)", org: "American University of Science and Technology, Beirut, Lebanon" }
@@ -584,11 +584,6 @@ const T = {
             "Took part in maintenance and repair interventions alongside senior technicians."
           ]
         }
-      ],
-      inv: [
-        { when: "2021 – 2023", title: "Secretary", org: "IEEE AUST Student Branch", bullets: ["Organized events"] },
-        { when: "2023", title: "Mentee", org: "IEEE EMBS Mentoring Program", bullets: ["Analyzed data"] },
-        { when: "2023", title: "Teaching Assistant", org: "AUST Robotics Camp", bullets: ["Led workshops"] }
       ]
     },
     skills: {
@@ -772,8 +767,8 @@ const T = {
     },
     bg: {
       title: "Parcours",
-      meta: "Formation, expérience, engagements",
-      tabs: { edu: "Formation", exp: "Expérience", inv: "Engagements" },
+      meta: "Formation, expérience",
+      tabs: { edu: "Formation", exp: "Expérience" },
       edu: [
         { when: "2025 – Présent", title: "Master de Sciences en Ingénierie Mécatronique", org: "Polytech Annecy · Université Savoie Mont Blanc" },
         { when: "2019 – 2024", title: "Bachelor of Science en Génie Informatique et Communications (option Génie Biomédical)", org: "American University of Science and Technology, Beyrouth, Liban" }
@@ -788,11 +783,6 @@ const T = {
             "Participé aux interventions de maintenance et de réparation aux côtés des techniciens seniors."
           ]
         }
-      ],
-      inv: [
-        { when: "2021 – 2023", title: "Secrétaire", org: "Comité IEEE, branche AUST", bullets: ["Organisé des événements"] },
-        { when: "2023", title: "Mentoré", org: "IEEE EMBS Mentoring Program", bullets: ["Analysé des données"] },
-        { when: "2023", title: "Assistant enseignant", org: "AUST Robotics Camp", bullets: ["Encadré des ateliers"] }
       ]
     },
     skills: {
@@ -1070,7 +1060,7 @@ if (typeof module !== "undefined") module.exports = T;
     $("#sk-soft").innerHTML = S.soft.map(function (x) { return '<li class="chip">' + x + "</li>"; }).join("");
     $("#sk-lang").innerHTML = S.langs.map(function (x) { return "<li><span>" + x[0] + "</span><span>" + x[1] + "</span></li>"; }).join("");
   }
-  var TABS = ["edu", "exp", "inv"], tab = "edu";
+  var TABS = ["edu", "exp"], tab = "edu";
   var tro = null;
   function row(r) {
     return '<div class="trow"><div class="mono when">' + r.when + "</div><div><h3>" + r.title + '</h3><p class="org">' + r.org + "</p>" +
